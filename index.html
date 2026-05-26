@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mehrshad Javadi — Business Strategy &amp; GTM</title>
+  <meta name="description" content="AI-native operator building at the intersection of agentic systems, competitive intelligence, and go-to-market strategy." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Three.js r128 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'void':           '#06060A',
+            'surface':        '#0D0D18',
+            'border-col':     '#1A1A2E',
+            'accent-primary': '#4F8EF7',
+            'accent-gold':    '#C9A84C',
+            'text-primary':   '#F0F0F5',
+            'text-secondary': '#6B7280',
+          },
+          fontFamily: {
+            syne:  ['Syne', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Custom Cursor ─────────────────────────────────────── -->
+  <div class="cursor-dot"  id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ── Page Loader ───────────────────────────────────────── -->
+  <div class="page-loader" id="pageLoader"></div>
+
+  <!-- ── Transition Flash ──────────────────────────────────── -->
+  <div class="transition-flash" id="transitionFlash"></div>
+
+  <!-- ════════════════════════════════════════════════════════
+       NAVIGATION
+       ════════════════════════════════════════════════════════ -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">MJ</a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about"      class="nav-link" data-section="about">About</a>
+        <a href="#work"       class="nav-link" data-section="work">Work</a>
+        <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+        <a href="#stack"      class="nav-link" data-section="stack">Stack</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Mobile Menu ───────────────────────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&#x2715;</button>
+    <nav class="mobile-nav">
+      <a href="#about"      class="mobile-nav-link">About</a>
+      <a href="#work"       class="mobile-nav-link">Work</a>
+      <a href="#experience" class="mobile-nav-link">Experience</a>
+      <a href="#stack"      class="mobile-nav-link">Stack</a>
+    </nav>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       SECTION 1 — HERO
+       ════════════════════════════════════════════════════════ -->
+  <div class="hero-wrapper">
+  <section id="hero" class="hero-section hero">
+
+    <!-- Background video -->
+    <div class="hero-video-wrapper" id="heroVideoWrapper">
+      <video
+        class="hero-video"
+        autoplay muted loop playsinline
+      >
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-bottom-fade"></div>
+    </div>
+
+    <!-- Three.js particle canvas -->
+    <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+    <!-- Hero text content -->
+    <div class="hero-content" id="heroContent">
+      <span class="hero-label" id="heroLabel">MEHRSHAD JAVADI</span>
+
+      <h1 class="hero-title">
+        <span class="hero-line-1" id="heroLine1">Business Strategy &amp; GTM</span>
+        <span class="hero-line-2" id="heroLine2">AI Operations &nbsp;·&nbsp; Agentic AI</span>
+      </h1>
+
+      <div class="hero-rule" id="heroRule"></div>
+
+      <p class="hero-bio" id="heroBio">
+        AI-native operator building at the intersection of agentic systems,
+        competitive intelligence, and go-to-market strategy.
+      </p>
+
+      <div class="hero-buttons" id="heroButtons">
+        <a href="#work"           class="btn-ghost">View Work</a>
+        <a href="assets/Mehrshad_Javadi_Resume.pdf" class="btn-ghost" target="_blank" rel="noopener">Download Resume</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" id="scrollIndicator">
+      <span class="scroll-text">scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+  </div><!-- /.hero-wrapper -->
+
+  <!-- ════════════════════════════════════════════════════════
+       SECTION 2 — ABOUT
+       ════════════════════════════════════════════════════════ -->
+  <section id="about" class="section-about about-section">
+    <div class="section-container">
+      <div class="about-grid">
+
+        <!-- Left — stats -->
+        <div class="about-left" id="aboutLeft">
+          <span class="section-label">ABOUT</span>
+          <div class="stats-block">
+            <div class="stat-item">
+              <span class="stat-number" data-target="3" data-suffix="+">0</span>
+              <span class="stat-label">Years Building</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="4" data-suffix="+">0</span>
+              <span class="stat-label">Years Customer Service</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="2" data-suffix="">0</span>
+              <span class="stat-label">Startups Launched</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right — copy -->
+        <div class="about-right" id="aboutRight">
+          <h2 class="section-heading" style="margin-bottom:28px">
+            Operator. Builder. Strategist.
+          </h2>
+          <p class="about-text">
+            I sit at the intersection where AI systems meet real business outcomes.
+            As a Business Administration graduate from SDSU, I have spent the last two
+            years building automation systems, evaluating agentic platforms, and developing
+            competitive intelligence for early-stage AI infrastructure startups.
+          </p>
+          <p class="about-text">
+            Currently building Copa Intel — AI-powered pre-match intelligence for the
+            FIFA World Cup 2026 — while contributing to Emotos, an agent security
+            infrastructure startup backed by the NVIDIA Inception Program.
+          </p>
+          <div class="about-tags">
+            <span class="tag-pill">SDSU Business Administration</span>
+            <span class="tag-pill">NVIDIA Inception Program</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       SECTION 3 — EXPERIENCE
+       ════════════════════════════════════════════════════════ -->
+  <section id="experience" class="section-experience">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">EXPERIENCE</span>
+        <h2 class="section-heading">Where I've Operated</h2>
+      </div>
+
+      <div class="timeline">
+
+        <!-- Entry 1 -->
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="entry-header">
+              <div class="entry-meta">
+                <h3 class="entry-role">Business Development &amp; Competitive Intelligence</h3>
+                <div class="entry-company-row">
+                  <span class="entry-company">Emotos</span>
+                  <span class="entry-type">AI Agent Security Infrastructure &nbsp;·&nbsp; Internship</span>
+                </div>
+                <span class="entry-period">2025 – Present</span>
+              </div>
+              <span class="tag-pill tag-current">Current</span>
+            </div>
+            <ul class="entry-bullets">
+              <li>Conducted competitive analysis of 8+ AI agent platforms including n8n, Make.com, Zapier, and Activepieces; produced ecosystem intelligence reports shaping GTM positioning strategy</li>
+              <li>Developed viral GTM playbook mapping the agentic AI landscape across four categories, identifying Identity &amp; Trust as core differentiation angle</li>
+              <li>Evaluated 10+ agentic platforms including LangChain, CrewAI, AutoGen, Relevance AI, and Okta Workflows; delivered structured assessments to founding team</li>
+              <li>Built and self-hosted n8n automation on Railway with webhook triggers, HTTP requests, and API integrations</li>
+              <li>Represented startup at SaaStr AI Annual 2026; generated 4 warm enterprise design partner leads</li>
+              <li>Startup accepted into NVIDIA Inception Program</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Entry 2 -->
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="entry-header">
+              <div class="entry-meta">
+                <h3 class="entry-role">Founder &amp; Automation Architect</h3>
+                <div class="entry-company-row">
+                  <span class="entry-company">One Stop Serve</span>
+                  <span class="entry-type">Self-Employed &nbsp;·&nbsp; Automation Agency</span>
+                </div>
+                <span class="entry-period">Dec 2024 – Feb 2025</span>
+              </div>
+            </div>
+            <ul class="entry-bullets">
+              <li>Built GoHighLevel-based missed call recovery automation system for service businesses</li>
+              <li>Developed three-tier pricing model, A2P SMS compliance setup, and 7-day client demo workflow</li>
+              <li>Managed full-stack operations including CRM configuration, pipeline design, and landing page builds</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Entry 3 -->
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="entry-header">
+              <div class="entry-meta">
+                <h3 class="entry-role">Independent Creator &amp; Growth Experimenter</h3>
+                <div class="entry-company-row">
+                  <span class="entry-company">Digital Products Venture</span>
+                  <span class="entry-type">Self-Employed</span>
+                </div>
+                <span class="entry-period">2025</span>
+              </div>
+            </div>
+            <ul class="entry-bullets">
+              <li>Launched digital product eBooks with custom landing pages and Stripe payment integration</li>
+              <li>Managed full Meta Ads campaign lifecycle including audience targeting, A/B testing, and ROAS optimization using Meta Pixel</li>
+              <li>Built and iterated UGC-style video and visual ad creatives for Meta feeds</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Entry 4 -->
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="entry-header">
+              <div class="entry-meta">
+                <h3 class="entry-role">Assistant Manager</h3>
+                <div class="entry-company-row">
+                  <span class="entry-company">Nextech VR &amp; Arcade</span>
+                  <span class="entry-type">Full-Time</span>
+                </div>
+                <span class="entry-period">Sep 2021 – Jul 2023</span>
+              </div>
+            </div>
+            <ul class="entry-bullets">
+              <li>Independently operated daily business functions of VR arcade as sole on-site decision-maker</li>
+              <li>Managed cash handling, inventory, equipment maintenance, and customer experience</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Entry 5 -->
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="entry-header">
+              <div class="entry-meta">
+                <h3 class="entry-role">Sales Associate &amp; Customer Service</h3>
+                <div class="entry-company-row">
+                  <span class="entry-company">Lamps Plus</span>
+                  <span class="entry-type">Part-Time</span>
+                </div>
+                <span class="entry-period">2020 – 2021</span>
+              </div>
+            </div>
+            <ul class="entry-bullets">
+              <li>Delivered consultative sales experience for customers selecting lighting and home furnishing solutions, consistently exceeding personal sales targets</li>
+              <li>Built product expertise across 1,000+ SKUs to guide customers through technical specifications, style matching, and installation requirements</li>
+              <li>Maintained showroom presentation standards, processed transactions, and resolved customer concerns to ensure high satisfaction scores</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       SECTION 4 — TOOLS & STACK
+       ════════════════════════════════════════════════════════ -->
+  <section id="stack" class="section-stack">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">STACK</span>
+        <h2 class="section-heading">Tools I Work With</h2>
+      </div>
+
+      <!-- Row 1 -->
+      <div class="stack-group">
+        <p class="stack-group-label">AI &amp; Development</p>
+        <div class="tool-grid">
+          <div class="tool-card"><span class="tool-name">n8n</span><span class="tool-category">Automation</span></div>
+          <div class="tool-card"><span class="tool-name">Claude</span><span class="tool-category">AI Model</span></div>
+          <div class="tool-card"><span class="tool-name">Claude Code</span><span class="tool-category">AI Dev</span></div>
+          <div class="tool-card"><span class="tool-name">GoHighLevel</span><span class="tool-category">CRM / Automation</span></div>
+          <div class="tool-card"><span class="tool-name">Make.com</span><span class="tool-category">Automation</span></div>
+          <div class="tool-card"><span class="tool-name">Zapier</span><span class="tool-category">Automation</span></div>
+          <div class="tool-card"><span class="tool-name">Relevance AI</span><span class="tool-category">Agentic AI</span></div>
+          <div class="tool-card"><span class="tool-name">AgentOps</span><span class="tool-category">Agent Monitoring</span></div>
+          <div class="tool-card"><span class="tool-name">OpenClaw</span><span class="tool-category">AI Tool</span></div>
+          <div class="tool-card"><span class="tool-name">GitHub</span><span class="tool-category">Version Control</span></div>
+          <div class="tool-card"><span class="tool-name">Railway</span><span class="tool-category">Hosting</span></div>
+          <div class="tool-card"><span class="tool-name">PostgreSQL</span><span class="tool-category">Database</span></div>
+          <div class="tool-card"><span class="tool-name">Codex</span><span class="tool-category">AI Dev</span></div>
+          <div class="tool-card"><span class="tool-name">Stripe</span><span class="tool-category">Payments</span></div>
+          <div class="tool-card"><span class="tool-name">WordPress</span><span class="tool-category">Web Platform</span></div>
+          <div class="tool-card"><span class="tool-name">API Integration</span><span class="tool-category">Development</span></div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="stack-group">
+        <p class="stack-group-label">Growth &amp; Creative</p>
+        <div class="tool-grid">
+          <div class="tool-card"><span class="tool-name">Meta Ads</span><span class="tool-category">Paid Growth</span></div>
+          <div class="tool-card"><span class="tool-name">Meta Pixel</span><span class="tool-category">Analytics</span></div>
+          <div class="tool-card"><span class="tool-name">Midjourney</span><span class="tool-category">AI Creative</span></div>
+          <div class="tool-card"><span class="tool-name">HeyGen</span><span class="tool-category">AI Video</span></div>
+          <div class="tool-card"><span class="tool-name">Adobe Firefly</span><span class="tool-category">AI Creative</span></div>
+          <div class="tool-card"><span class="tool-name">CapCut</span><span class="tool-category">Video Editing</span></div>
+          <div class="tool-card"><span class="tool-name">Runway</span><span class="tool-category">AI Video</span></div>
+          <div class="tool-card"><span class="tool-name">Notion</span><span class="tool-category">Productivity</span></div>
+          <div class="tool-card"><span class="tool-name">Excel</span><span class="tool-category">Data</span></div>
+          <div class="tool-card"><span class="tool-name">Wix</span><span class="tool-category">Web Builder</span></div>
+          <div class="tool-card"><span class="tool-name">Lovable</span><span class="tool-category">AI Web Dev</span></div>
+        </div>
+      </div>
+
+      <!-- Row 3 — In Progress -->
+      <div class="stack-group">
+        <p class="stack-group-label">In Progress</p>
+        <div class="tool-grid">
+          <div class="tool-card tool-card--learning">
+            <span class="tool-name">HubSpot</span>
+            <span class="tool-category">CRM</span>
+            <span class="tool-learning-badge">learning</span>
+          </div>
+          <div class="tool-card tool-card--learning">
+            <span class="tool-name">NVIDIA DLI NCA-GENL</span>
+            <span class="tool-category">AI Certification</span>
+            <span class="tool-learning-badge">learning</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       SECTION 5 — WORK / PORTFOLIO
+       ════════════════════════════════════════════════════════ -->
+  <section id="work" class="section-work">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">WORK</span>
+        <h2 class="section-heading">Selected Projects</h2>
+      </div>
+
+      <div class="work-grid">
+
+        <!-- FEATURED — Copa Intel -->
+        <div class="project-card project-card--featured" data-href="https://copaintel.com">
+          <div class="card-inner">
+            <div class="card-shimmer"></div>
+            <span class="card-tag card-tag--gold">LIVE PRODUCT</span>
+            <h3 class="card-title">Copa Intel</h3>
+            <p class="card-descriptor">
+              AI-powered pre-match intelligence platform for the FIFA World Cup 2026.
+              10,000 simulations per match. Tactical briefings delivered 3 hours before kickoff.
+            </p>
+            <div class="card-footer">
+              <div class="card-tools">
+                <span class="tool-tag">AI</span>
+                <span class="tool-tag">Simulation Engine</span>
+                <span class="tool-tag">Web Platform</span>
+              </div>
+              <a href="https://copaintel.com" target="_blank" rel="noopener" class="card-link" aria-label="Visit Copa Intel">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="project-card">
+          <div class="card-inner">
+            <span class="card-tag">AUTOMATION SYSTEM</span>
+            <h3 class="card-title">One Stop Serve</h3>
+            <p class="card-descriptor">
+              GoHighLevel-based missed revenue recovery system for service businesses.
+              Full CRM, SMS automation, and client pipeline built and operated solo.
+            </p>
+            <div class="card-footer">
+              <div class="card-tools">
+                <span class="tool-tag">GoHighLevel</span>
+                <span class="tool-tag">SMS</span>
+                <span class="tool-tag">CRM</span>
+                <span class="tool-tag">Landing Pages</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="project-card">
+          <div class="card-inner">
+            <span class="card-tag">GROWTH &amp; MONETIZATION</span>
+            <h3 class="card-title">Digital Products Launch</h3>
+            <p class="card-descriptor">
+              End-to-end solo operation — product creation, custom landing pages,
+              Stripe integration, and Meta Ads campaigns with full pixel tracking and ROAS optimization.
+            </p>
+            <div class="card-footer">
+              <div class="card-tools">
+                <span class="tool-tag">Meta Ads</span>
+                <span class="tool-tag">Stripe</span>
+                <span class="tool-tag">Landing Pages</span>
+                <span class="tool-tag">Meta Pixel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="project-card">
+          <div class="card-inner">
+            <span class="card-tag">COMPETITIVE INTELLIGENCE</span>
+            <h3 class="card-title">Agentic AI Platform Analysis</h3>
+            <p class="card-descriptor">
+              Deep evaluation of 10+ agentic AI platforms for an agent security infrastructure startup.
+              Produced ecosystem intelligence reports and GTM positioning brief used by founding team.
+            </p>
+            <div class="card-footer">
+              <div class="card-tools">
+                <span class="tool-tag">n8n</span>
+                <span class="tool-tag">LangChain</span>
+                <span class="tool-tag">CrewAI</span>
+                <span class="tool-tag">Relevance AI</span>
+                <span class="tool-tag">Make.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="project-card">
+          <div class="card-inner">
+            <span class="card-tag">STARTUP BD</span>
+            <h3 class="card-title">SaaStr AI Annual 2026</h3>
+            <p class="card-descriptor">
+              Represented Emotos at SaaStr AI Annual 2026. Scouted design partner candidates
+              across 17 companies, generated 4 warm enterprise leads for an NVIDIA Inception Program startup.
+            </p>
+            <div class="card-footer">
+              <div class="card-tools">
+                <span class="tool-tag">BD</span>
+                <span class="tool-tag">GTM</span>
+                <span class="tool-tag">Enterprise Sales</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 — Coming Soon -->
+        <div class="project-card project-card--coming-soon">
+          <div class="card-inner">
+            <span class="card-tag card-tag--muted">COMING SOON</span>
+            <h3 class="card-title">AI Automation Template Library</h3>
+            <p class="card-descriptor">
+              Productized n8n and Make.com workflow templates for common business automation use cases.
+              Launching soon.
+            </p>
+            <div class="card-footer">
+              <div class="card-tools">
+                <span class="tool-tag">n8n</span>
+                <span class="tool-tag">Make.com</span>
+                <span class="tool-tag">Automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       SECTION 6 — EDUCATION
+       ════════════════════════════════════════════════════════ -->
+  <section id="education" class="section-education">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-label">EDUCATION</span>
+        <h2 class="section-heading">Academic Foundation</h2>
+      </div>
+
+      <div class="education-grid">
+        <div class="edu-card">
+          <div class="edu-card-inner">
+            <span class="edu-status edu-status--complete">Completed</span>
+            <h3 class="edu-institution">San Diego State University</h3>
+            <p class="edu-degree">Bachelor of Science, Business Administration</p>
+            <span class="edu-period">2023 – 2026</span>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-card-inner">
+            <span class="edu-status edu-status--complete">Completed</span>
+            <h3 class="edu-institution">Los Angeles Valley College</h3>
+            <p class="edu-degree">Associate of Science, Business Administration</p>
+            <span class="edu-period">2020 – 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-main">
+
+        <div class="footer-brand">
+          <span class="footer-name">Mehrshad Javadi</span>
+          <span class="footer-tagline">AI-native operator &nbsp;·&nbsp; GTM &nbsp;·&nbsp; Agentic Systems</span>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="#about"      class="footer-link">About</a>
+          <a href="#work"       class="footer-link">Work</a>
+          <a href="#experience" class="footer-link">Experience</a>
+          <a href="#stack"      class="footer-link">Stack</a>
+        </nav>
+
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/mehrshad-javadi-49922a188" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </a>
+          <a href="mailto:mehrshaddd3@gmail.com" class="social-link" aria-label="Email">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Mehrshad Javadi &nbsp;·&nbsp; mehrshadaghdam.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
