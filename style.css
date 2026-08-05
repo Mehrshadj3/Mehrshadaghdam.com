@@ -385,6 +385,34 @@ img, video { max-width: 100%; display: block; }
   text-shadow: 0 1px 18px rgba(6,6,10,.9), 0 0 36px rgba(6,6,10,.7);
 }
 
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 640px;
+  margin: -14px 0 36px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.hero-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hero-stat-number {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
 .hero-buttons {
   display: flex;
   gap: 16px;
@@ -615,6 +643,14 @@ img, video { max-width: 100%; display: block; }
   font-size: 12px;
 }
 
+
+.entry-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.72;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    STACK
    ═══════════════════════════════════════════════════════════════ */
@@ -798,6 +834,12 @@ img, video { max-width: 100%; display: block; }
   line-height: 1.72;
   flex: 1;
   margin-bottom: 24px;
+}
+.project-card--featured .card-descriptor:first-of-type {
+  flex: 0;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
 }
 .card-footer {
   display: flex;
@@ -985,6 +1027,8 @@ img, video { max-width: 100%; display: block; }
   .hero-content { left: 6%; bottom: 14%; max-width: 90%; }
   .hero-line-1 { font-size: clamp(28px, 9vw, 48px); }
   .hero-line-2 { font-size: clamp(18px, 5.5vw, 28px); }
+  .hero-stats { grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
+  .hero-stat-number { font-size: 28px; }
 
   .section-heading { font-size: 28px; }
 
