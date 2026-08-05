@@ -20,8 +20,8 @@ let lenis;
 
 function initLenis() {
   lenis = new Lenis({
-    lerp: 0.22,
-    wheelMultiplier: 1.35,
+    lerp: 0.14,
+    wheelMultiplier: 1.1,
     touchMultiplier: 1.4,
     smoothWheel: true,
   });
@@ -271,7 +271,6 @@ function initHero() {
   const heroLine2   = document.getElementById('heroLine2');
   const heroRule    = document.getElementById('heroRule');
   const heroBio     = document.getElementById('heroBio');
-  const heroStats   = document.getElementById('heroStats');
   const heroButtons = document.getElementById('heroButtons');
   const heroContent = document.getElementById('heroContent');
   const flashEl     = document.getElementById('transitionFlash');
@@ -284,30 +283,29 @@ function initHero() {
     .to(heroLine2,   { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out' }, 0.8)
     .to(heroRule,    { width: 80,          duration: .8,  ease: 'power3.out' }, 1.0)
     .to(heroBio,     { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, 1.2)
-    .to(heroStats,   { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, 1.35)
-    .to(heroButtons, { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, 1.5);
+    .to(heroButtons, { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, 1.4);
 
-  /* ── Video zoom — complete within the first 320px of scroll ── */
+  /* ── Video zoom — complete within the first 420px of scroll ── */
   gsap.to('.hero-video', {
-    scale: 4,
+    scale: 3.2,
     ease: 'none',
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: '+=320',
-      scrub: 0,
+      end: '+=420',
+      scrub: 0.12,
     },
   });
 
   /* Overlay zooms in perfect sync with the video */
   gsap.to('.hero-overlay', {
-    scale: 4,
+    scale: 3.2,
     ease: 'none',
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: '+=320',
-      scrub: 0,
+      end: '+=420',
+      scrub: 0.12,
     },
   });
 
