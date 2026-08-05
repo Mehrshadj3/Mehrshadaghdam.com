@@ -20,7 +20,9 @@ let lenis;
 
 function initLenis() {
   lenis = new Lenis({
-    lerp: 0.085,
+    lerp: 0.22,
+    wheelMultiplier: 1.35,
+    touchMultiplier: 1.4,
     smoothWheel: true,
   });
 
@@ -285,15 +287,15 @@ function initHero() {
     .to(heroStats,   { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, 1.35)
     .to(heroButtons, { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, 1.5);
 
-  /* ── Video zoom — complete within the first 350px of scroll ── */
+  /* ── Video zoom — complete within the first 320px of scroll ── */
   gsap.to('.hero-video', {
     scale: 4,
     ease: 'none',
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: '+=350',
-      scrub: true,
+      end: '+=320',
+      scrub: 0,
     },
   });
 
@@ -304,8 +306,8 @@ function initHero() {
     scrollTrigger: {
       trigger: '.hero-wrapper',
       start: 'top top',
-      end: '+=350',
-      scrub: true,
+      end: '+=320',
+      scrub: 0,
     },
   });
 
